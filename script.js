@@ -71,3 +71,14 @@ lb.ontouchstart=(e)=>{e.preventDefault();keys.left=true}; lb.ontouchend=()=>keys
 rb.ontouchstart=(e)=>{e.preventDefault();keys.right=true}; rb.ontouchend=()=>keys.right=false;
 lb.onmousedown=()=>keys.left=true; lb.onmouseup=()=>keys.left=false;
 rb.onmousedown=()=>keys.right=true; rb.onmouseup=()=>keys.right=false;
+
+// TECLADO PC - CORRIGIDO
+window.addEventListener('keydown', e=>{
+  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') left=true;
+  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') right=true;
+});
+window.addEventListener('keyup', e=>{
+  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') left=false;
+  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') right=false;
+});
+
