@@ -60,77 +60,79 @@ body {
   color: white;
 }
 
-/* CAPA - MESMO FORMATO, SÓ MAIS BONITA */
+/* SÓ A CAPA QUE VOCÊ MARCOU - FORMATO DA FOTO */
 #capa {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #ffffff 0%, #e8f5e9 35%, #81c784 100%);
+  background: #eaf6ec;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 25px;
+  padding: 20px;
   z-index: 10;
 }
 
 #capa h1 {
-  color: #0d3b10;
-  font-size: 46px;
+  color: #1e4a28;
+  font-size: 38px;
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -1px;
-  text-shadow: 
-    0 2px 0 #ffffff,
-    0 4px 0 #a5d6a7,
-    0 8px 20px rgba(0,0,0,0.15);
+  line-height: 0.95;
+  margin-bottom: 12px;
+}
+
+#capa h1::before {
+  content: '🌳';
+  font-size: 34px;
 }
 
 .sub {
-  margin-top: 12px;
-  background: #1b5e20;
-  padding: 8px 20px;
+  background: #2e7d32;
+  color: white;
+  padding: 7px 18px;
   border-radius: 20px;
-  color: #c8e6c9;
-  font-weight: 900;
-  font-size: 13px;
-  letter-spacing: 1.5px;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
 .regras {
-  background: white;
-  margin: 20px 0;
-  padding: 16px;
-  border-radius: 16px;
-  border: 3px dashed #2e7d32;
-  width: 95%;
+  background: #fffdf5;
+  border: 2.5px dashed #a5d6a7;
+  border-radius: 12px;
+  width: 90%;
+  padding: 12px 10px;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 1.6;
-  color: #1b5e20;
-  box-shadow: 0 6px 0 #1b5e20;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #2e7d32;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+  margin-bottom: 18px;
 }
 
 #startBtn {
-  background: #1b5e20;
+  background: #3a8a4a;
   color: white;
   border: none;
-  padding: 16px 60px;
-  font-size: 22px;
-  border-radius: 50px;
+  width: 85%;
+  padding: 14px 0;
+  font-size: 18px;
+  border-radius: 25px;
   font-weight: 900;
-  letter-spacing: 1px;
-  box-shadow: 0 6px 0 #0d3311;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 0 #1b5e20;
   cursor: pointer;
 }
 
+/* AVISO DE FASE */
 #avisoFase {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.9);
   z-index: 99;
-  text-align: center;
 }
 
 #avisoFase:not(.hidden) {
@@ -144,33 +146,11 @@ body {
   padding: 30px 20px;
   border-radius: 25px;
   width: 85%;
-  animation: pop 0.4s ease;
+  text-align: center;
 }
 
-.avisoBox span {
-  font-size: 70px;
-  display: block;
-}
+.avisoBox span { font-size: 70px; display: block; }
+.avisoBox h2 { color: #1b5e20; font-size: 24px; margin: 10px 0; }
+.avisoBox p { font-size: 14px; font-weight: bold; line-height: 1.4; }
 
-.avisoBox h2 {
-  color: #1b5e20;
-  font-size: 24px;
-  margin: 10px 0;
-  font-weight: 900;
-}
-
-.avisoBox p {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1.4;
-  color: #333;
-}
-
-@keyframes pop {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
