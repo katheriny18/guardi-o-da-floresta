@@ -9,6 +9,7 @@ let score = 0, time = 90, lives = 3, gameActive = false, level = 1;
 let player = { x: 180, y: 530, w: 60, h: 40 };
 let items = [];
 let keys = { left: false, right: false };
+let timerInterval = null;
 
 const fases = [
   { nome: "Mata Atlântica", cor: "#a5d6a7", meta: 200,
@@ -36,17 +37,12 @@ function getFaseAtual(){
   return fases[0];
 }
 
-function mostrarAvisoFase(){
+function mostrarAviso(texto, cor){
   const aviso = document.createElement('div');
-  aviso.textContent = "🌍 FASE "+level+": "+getFaseAtual().nome+"!";
-  Object.assign(aviso.style, {
-    position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)',
-    background:'gold', color:'black', padding:'15px 25px', borderRadius:'15px',
-    fontWeight:'bold', fontSize:'18px', zIndex:'30', boxShadow:'0 10px 20px rgba(0,0,0,0.4)',
-    animation:'pop 0.5s ease'
-  });
+  aviso.textContent = texto;
+  aviso.style.cssText = `position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:${cor||'gold'};color:black;padding:15px 25px;border-radius:15px;font-weight:bold;font-size:18px;z-index:30;`;
   document.getElementById('gameContainer').appendChild(aviso);
-  setTimeout(()=>aviso.remove(), 2500);
+  setTimeout(()=>aviso.remove(), 2000);
 }
 
 function spawnItem(){
@@ -54,49 +50,52 @@ function spawnItem(){
   const isGood = Math.random() > 0.4;
   const lista = isGood? fase.good : fase.bad;
   const tipo = lista[Math.floor(Math.random()*lista.length)];
-  items.push({ x:Math.random()*360, y:-40, speed:2+Math.random()*3+(level*0.4), type:tipo, isGood:isGood });
+  if(items.length > 30) return; // limite pra não travar
+  items.push({ x:Math.random()*360, y:-40, speed:2+Math.random()*2+(level*0.3), type:tipo, isGood:isGood });
 }
 
-// AQUI MUDEI PRA PESSOA
-function drawPlayer(){
-  ctx.font='42px serif';
-  ctx.fillText('🧑‍🌾',player.x,player.y+30);
-}
+function drawPlayer(){ ctx.font='42px serif'; ctx.fillText('🧑‍🌾',player.x,player.y+30); }
 
 function update(){
   if(!gameActive) return;
   ctx.clearRect(0,0,420,600);
-  canvas.style.background = getFaseAtual().cor;
 
-  if(keys.left) player.x-=6; if(keys.right) player.x+=6;
+  if(keys.left) player.x-=6;
+  if(keys.right) player.x+=6;
   player.x=Math.max(0,Math.min(360,player.x));
 
-  if(Math.random()<0.06) spawnItem();
+  if(Math.random()<0.05) spawnItem();
 
   for(let i=items.length-1;i>=0;i--){
     let it=items[i]; it.y+=it.speed;
     ctx.font='32px serif'; ctx.fillText(it.type.emoji,it.x,it.y);
     if(it.y>player.y && it.y<player.y+40 && it.x>player.x-20 && it.x<player.x+60){
-      if(it.isGood){ score+=it.type.points; } else { score=Math.max(0,score+it.type.points); lives--; livesEl.textContent=lives; if(lives<=0){ alert('Game Over! Fez '+score+' pts'); location.reload(); return; } }
+      if(it.isGood){ score+=it.type.points; } else { score=Math.max(0,score+it.type.points); lives--; livesEl.textContent=lives; if(lives<=0){ gameActive=false; mostrarAviso('Game Over! '+score+' pts','tomato'); setTimeout(()=>location.reload(),1500); return; } }
       scoreEl.textContent=score;
       let novaFase=1;
       if(score>=800) novaFase=5; else if(score>=600) novaFase=4; else if(score>=400) novaFase=3; else if(score>=200) novaFase=2;
       if(novaFase>level){
         level=novaFase; levelEl.textContent=level;
         document.body.className='fase-'+level;
-        mostrarAvisoFase();
+        canvas.style.background = getFaseAtual().cor; // SÓ TROCA AQUI, NÃO TODO FRAME
+        mostrarAviso("🌍 FASE "+level+": "+getFaseAtual().nome);
       }
       items.splice(i,1); continue;
     }
     if(it.y>620) items.splice(i,1);
   }
-  drawPlayer(); requestAnimationFrame(update);
+  drawPlayer();
+  requestAnimationFrame(update);
 }
 
 function startGame(){
+  if(gameActive) return;
   document.getElementById('rules').classList.add('hidden');
-  gameActive=true; update();
-  setInterval(()=>{ time--; timeEl.textContent=time; if(time<=0){ alert('Fim! Fez '+score+' pts'); location.reload(); } },1000);
+  canvas.style.background = fases[0].cor; // cor inicial
+  gameActive=true;
+  update();
+  if(timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{ time--; timeEl.textContent=time; if(time<=0){ gameActive=false; mostrarAviso('Fim! '+score+' pts','lightgreen'); setTimeout(()=>location.reload(),1500);} },1000);
 }
 
 document.getElementById('startBtn').onclick=startGame;
@@ -105,3 +104,5 @@ leftBtn.onmousedown=()=>keys.left=true; leftBtn.onmouseup=()=>keys.left=false;
 rightBtn.onmousedown=()=>keys.right=true; rightBtn.onmouseup=()=>keys.right=false;
 leftBtn.ontouchstart=(e)=>{e.preventDefault();keys.left=true}; leftBtn.ontouchend=()=>keys.left=false;
 rightBtn.ontouchstart=(e)=>{e.preventDefault();keys.right=true}; rightBtn.ontouchend=()=>keys.right=false;
+document.addEventListener('keydown', e=>{ if(e.key==='ArrowLeft') keys.left=true; if(e.key==='ArrowRight') keys.right=true; });
+document.addEventListener('keyup', e=>{ if(e.key==='ArrowLeft') keys.left=false; if(e.key==='ArrowRight') keys.right=false; });
