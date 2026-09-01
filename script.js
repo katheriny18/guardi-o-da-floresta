@@ -72,13 +72,38 @@ rb.ontouchstart=(e)=>{e.preventDefault();keys.right=true}; rb.ontouchend=()=>key
 lb.onmousedown=()=>keys.left=true; lb.onmouseup=()=>keys.left=false;
 rb.onmousedown=()=>keys.right=true; rb.onmouseup=()=>keys.right=false;
 
-// TECLADO PC - CORRIGIDO
-window.addEventListener('keydown', e=>{
-  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') left=true;
-  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') right=true;
+
+let playerX = 180;
+let left = false;
+let right = false;
+
+// TECLADO FUNCIONANDO NO PC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'a') left = true;
+  if (e.key === 'ArrowRight' || e.key === 'd') right = true;
 });
-window.addEventListener('keyup', e=>{
-  if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') left=false;
-  if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') right=false;
+
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'a') left = false;
+  if (e.key === 'ArrowRight' || e.key === 'd') right = false;
 });
+
+function loop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  if (left) playerX -= 6;
+  if (right) playerX += 6;
+
+  if (playerX < 0) playerX = 0;
+  if (playerX > 360) playerX = 360;
+
+  ctx.font = '50px serif';
+  ctx.fillText('🧑‍🌾', playerX, 550);
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+
+
 
