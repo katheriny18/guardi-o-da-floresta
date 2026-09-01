@@ -106,3 +106,144 @@ body.fase-2 { background: #4fc3f7; }
 body.fase-3 { background: #ffab91; }
 body.fase-4 { background: #b0bec5; }
 body.fase-5 { background: #01579b; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #a5d6a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.5s ease;
+  padding: 10px;
+}
+
+#gameContainer {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: #2e7d32;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#level {
+  background: gold;
+  color: black;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+#canvas {
+  background: #a5d6a7;
+  display: block;
+  width: 100%;
+  height: 600px;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #eee;
+}
+
+#controls button {
+  width: 60px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 50%;
+  border: none;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+#rules {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 10;
+  text-align: center;
+}
+
+#startBtn {
+  margin-top: 15px;
+  padding: 14px 30px;
+  font-size: 18px;
+  background: #FFEB3B;
+  color: #1b5e20;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* FASES */
+body.fase-1 { background: #a5d6a7; }
+body.fase-2 { background: #4fc3f7; }
+body.fase-3 { background: #ffab91; }
+body.fase-4 { background: #b0bec5; }
+body.fase-5 { background: #01579b; }
+
+/* ===== RESPONSIVO COMPUTADOR ===== */
+@media (min-width: 768px) {
+  #gameContainer {
+    width: 500px; /* maior no PC */
+  }
+  #canvas {
+    height: 650px;
+  }
+  #controls {
+    display: none; /* esconde botões no PC */
+  }
+  #hud {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  body {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #gameContainer {
+    width: 550px;
+    transform: scale(1.05);
+  }
+}
+
+/* Dica de controle no PC */
+@media (min-width: 768px) {
+  #rules::after {
+    content: "Dica: use as setas ← → do teclado";
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
