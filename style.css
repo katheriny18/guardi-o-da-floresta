@@ -91,3 +91,47 @@ body {
 }
 
 .hidden { display: none !important; }
+
+/* ===== A PARTIR DAQUI - 5 FASES ===== */
+#canvas {
+  transition: background 0.8s ease;
+}
+
+#level {
+  background: gold;
+  padding: 2px 10px;
+  border-radius: 10px;
+  color: black;
+  margin-left: 5px;
+}
+
+/* FASE 1 - Mata (0-49) */
+body.fase-1 { background: #a5d6a7; }
+body.fase-1 #canvas { background: #a5d6a7; }
+
+/* FASE 2 - Rio (50-99) */
+body.fase-2 { background: #4fc3f7; }
+body.fase-2 #canvas { background: #4fc3f7; }
+
+/* FASE 3 - Cerrado (100-149) */
+body.fase-3 { background: #ffab91; }
+body.fase-3 #canvas { background: #ffcc80; }
+body.fase-3 #gameContainer {
+  animation: tremer 0.2s infinite;
+}
+
+/* FASE 4 - Cidade (150-199) */
+body.fase-4 { background: #b0bec5; }
+body.fase-4 #canvas { background: #b0bec5; }
+
+/* FASE 5 - Oceano Final (200+) */
+body.fase-5 { background: #01579b; }
+body.fase-5 #canvas {
+  background: linear-gradient(to bottom, #0277bd, #001f3f);
+}
+
+@keyframes tremer {
+  0% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0,0); }
+}
