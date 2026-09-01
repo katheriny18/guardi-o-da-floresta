@@ -3,33 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guardiões da Natureza</title>
+<title>Guardião da Floresta</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="fase-1">
+<body>
 <div id="gameContainer">
-  <div id="hud">
-    <div>⭐ <span id="score">0</span></div>
-    <div>FASE <span id="level">1</span></div>
-    <div>⏱️ <span id="time">90</span></div>
-    <div>❤️ <span id="lives">3</span></div>
+  <div id="info">
+    <span>⭐ <span id="score">0</span></span>
+    <span>❤️ <span id="lives">3</span></span>
+    <span>⏱️ <span id="time">90</span>s</span>
+    <span>🌲 Fase <span id="level">1</span>/5</span>
   </div>
   <canvas id="canvas" width="420" height="600"></canvas>
+
   <div id="controls">
     <button id="leftBtn">⬅️</button>
     <button id="rightBtn">➡️</button>
   </div>
+
   <div id="rules">
-    <h1>🌍 Guardiões da Natureza</h1>
-    <p>Salve os animais!</p>
-    <div style="text-align:left; margin:10px 0; font-size:12px; background:rgba(255,255,255,0.15); padding:10px; border-radius:10px;">
-      <b>FASE 1 (0-200):</b> 🐒=20 | 🦜=15 | 🦋=10<br>
-      <b>FASE 2 (200-400):</b> 🦫=30 | 🐢=25 | 🐟=20<br>
-      <b>FASE 3 (400-600):</b> 🐆=40 | 🦥=30<br>
-      <b>FASE 4 (600-800):</b> 🌳=50 | 🌱=35<br>
-      <b>FASE 5 (800+):</b> 🐋=60 | ⭐=70
-    </div>
-    <button id="startBtn">Começar Jogo</button>
+    <h2>🌳 Guardião da Floresta</h2>
+    <p>Use as SETAS ou A/D no PC<br>ou os BOTÕES no celular</p>
+    <p>🦜 Pegue os animais<br>🔥 Desvie do fogo</p>
+    <button id="startBtn">JOGAR</button>
   </div>
 </div>
 <script src="script.js"></script>
