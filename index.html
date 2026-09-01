@@ -8,23 +8,26 @@
 </head>
 <body>
 <div id="gameContainer">
-  <div id="info">
-    <span>⭐ <span id="score">0</span></span>
-    <span>❤️ <span id="lives">3</span></span>
-    <span>⏱️ <span id="time">90</span>s</span>
-    <span>🌲 Fase <span id="level">1</span>/5</span>
+  <div id="topo">
+    <span>⭐ <b id="score">0</b></span>
+    <span>❤️ <b id="lives">3</b></span>
+    <span>⏱️ <b id="time">90</b>s</span>
+    <span>🌲 Fase <b id="level">1</b>/5</span>
   </div>
   <canvas id="canvas" width="420" height="600"></canvas>
-
   <div id="controls">
     <button id="leftBtn">⬅️</button>
     <button id="rightBtn">➡️</button>
   </div>
-
-  <div id="rules">
-    <h2>🌳 Guardião da Floresta</h2>
-    <p>Use as SETAS ou A/D no PC<br>ou os BOTÕES no celular</p>
-    <p>🦜 Pegue os animais<br>🔥 Desvie do fogo</p>
+  <div id="capa">
+    <h1>🌳 Guardião da Floresta</h1>
+    <p>Salve os animais da Amazônia!</p>
+    <div class="regras">
+      <p>🦜🐒🦋 Pegue os animais = +20 pts</p>
+      <p>🔥🪓 Desvie do fogo</p>
+      <p>⌨️ PC: SETAS ou A e D</p>
+      <p>📱 Celular: Botões ⬅️ ➡️</p>
+    </div>
     <button id="startBtn">JOGAR</button>
   </div>
 </div>

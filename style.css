@@ -1,13 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#a5d6a7; display:flex; justify-content:center; align-items:center; min-height:100vh; font-family:Arial; }
-#gameContainer { position:relative; width:420px; max-width:95vw; }
-#info { background: #2e7d32; color:white; display:flex; justify-content:space-around; padding:10px; border-radius:10px 10px 0 0; font-weight:bold; }
-#canvas { background: #e8f5e9; width:100%; display:block; border:3px solid #2e7d32; }
-#controls { display:flex; justify-content:space-between; margin-top:10px; }
-#controls button { width:45%; height:60px; font-size:30px; border-radius:15px; border:none; background:#66bb6a; }
-#rules { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.95); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; border-radius:10px; padding:20px; }
-#rules h2 { margin-bottom:15px; }
-#rules p { margin:5px 0; }
-#startBtn { margin-top:20px; padding:15px 40px; font-size:20px; background:#2e7d32; color:white; border:none; border-radius:10px; }
-.hidden { display:none!important; }
+body {
+  background: #a5d6a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#gameContainer {
+  position: relative;
+  width: 420px;
+  max-width: 95vw;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#topo {
+  background: #2e7d32;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#canvas {
+  width: 100%;
+  height: 600px;
+  display: block;
+  background: #e8f5e9;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  background: #c8e6c9;
+}
+
+#controls button {
+  flex: 1;
+  height: 65px;
+  font-size: 30px;
+  background: #4caf50;
+  border: none;
+  border-radius: 12px;
+  color: white;
+}
+
+#capa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+#capa h1 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.regras {
+  background: #f1f8e9;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+#startBtn {
+  padding: 15px 50px;
+  font-size: 20px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
