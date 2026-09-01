@@ -1,191 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&display=swap');
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Fredoka', Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #c8e6c9 0%, #66bb6a 60%, #2e7d32 100%);
+  background: #a5d6a7;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 1s ease;
-  padding: 10px;
+  transition: background 0.8s;
 }
 
 #gameContainer {
   position: relative;
   width: 420px;
   max-width: 95vw;
-  border-radius: 28px;
+  border-radius: 20px;
   overflow: hidden;
   background: white;
-  box-shadow: 
-    0 20px 50px rgba(0,0,0,0.3),
-    0 0 0 4px rgba(255,255,255,0.6) inset;
-  border: 4px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 #topo {
-  background: linear-gradient(90deg, #1b5e20, #2e7d32);
+  background: #1b5e20;
   color: white;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  padding: 14px 8px;
-  font-weight: 800;
-  font-size: 13px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-  transition: background 0.8s ease;
-  letter-spacing: 0.3px;
-}
-
-#topo b {
-  background: rgba(255,255,255,0.2);
-  padding: 3px 8px;
-  border-radius: 20px;
-  margin-left: 4px;
+  padding: 12px 5px;
+  font-weight: bold;
+  font-size: 12px;
+  transition: background 0.8s;
 }
 
 #canvas {
   display: block;
   width: 100%;
   height: 600px;
-  background: 
-    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.8) 0%, transparent 20%),
-    radial-gradient(circle at 80% 90%, rgba(255,255,255,0.5) 0%, transparent 30%),
-    #e8f5e9;
-  transition: background 0.8s ease;
+  background: #e8f5e9;
+  transition: background 0.8s;
 }
 
 #controls {
   display: flex;
-  gap: 12px;
-  padding: 12px;
-  background: linear-gradient(#c8e6c9, #a5d6a7);
+  gap: 10px;
+  padding: 10px;
+  background: #c8e6c9;
 }
 
 #controls button {
   flex: 1;
-  height: 62px;
-  font-size: 30px;
+  height: 60px;
+  font-size: 28px;
   border: none;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #43a047, #2e7d32);
+  border-radius: 12px;
+  background: #2e7d32;
   color: white;
-  cursor: pointer;
-  box-shadow: 0 5px 0 #1b5e20, 0 8px 15px rgba(0,0,0,0.2);
-  transition: transform 0.1s;
 }
 
-#controls button:active {
-  transform: translateY(5px);
-  box-shadow: 0 0 0 #1b5e20;
-}
-
-/* CAPA PREMIUM */
+/* CAPA - MESMO FORMATO, SÓ MAIS BONITA */
 #capa {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 50% 10%, #fffde7 0%, #f1f8e9 25%, #a5d6a7 55%, #4caf50 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #e8f5e9 35%, #81c784 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 28px 22px;
+  padding: 25px;
   z-index: 10;
 }
 
-#capa::before {
-  content: '🌿🌳🌿';
-  font-size: 28px;
-  position: absolute;
-  top: 20px;
-  letter-spacing: 15px;
-}
-
 #capa h1 {
-  color: #1b5e20;
+  color: #0d3b10;
   font-size: 46px;
-  font-weight: 800;
-  line-height: 0.85;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -1px;
   text-shadow: 
-    4px 4px 0 white,
-    0 8px 15px rgba(0,0,0,0.15);
-  margin-top: 20px;
+    0 2px 0 #ffffff,
+    0 4px 0 #a5d6a7,
+    0 8px 20px rgba(0,0,0,0.15);
 }
 
 .sub {
-  margin-top: 14px;
-  background: linear-gradient(90deg, #1b5e20, #2e7d32);
-  padding: 8px 22px;
-  border-radius: 30px;
-  color: white;
-  font-weight: 800;
+  margin-top: 12px;
+  background: #1b5e20;
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: #c8e6c9;
+  font-weight: 900;
   font-size: 13px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .regras {
-  background: rgba(255,255,255,0.95);
-  margin: 22px 0;
-  padding: 18px 16px;
-  border-radius: 20px;
-  width: 92%;
-  font-weight: 700;
-  font-size: 12.5px;
-  line-height: 1.7;
-  color: #2e7d32;
-  box-shadow: 
-    0 8px 20px rgba(0,0,0,0.12),
-    0 0 0 3px white inset;
-  border: 2.5px dashed #81c784;
-  backdrop-filter: blur(5px);
+  background: white;
+  margin: 20px 0;
+  padding: 16px;
+  border-radius: 16px;
+  border: 3px dashed #2e7d32;
+  width: 95%;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #1b5e20;
+  box-shadow: 0 6px 0 #1b5e20;
 }
 
 #startBtn {
-  background: linear-gradient(180deg, #66bb6a, #2e7d32);
+  background: #1b5e20;
   color: white;
-  border: 3px solid white;
-  padding: 16px 58px;
-  font-size: 24px;
+  border: none;
+  padding: 16px 60px;
+  font-size: 22px;
   border-radius: 50px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 1px;
-  box-shadow: 
-    0 7px 0 #1b5e20,
-    0 12px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 0 #0d3311;
   cursor: pointer;
-  animation: pulse 1.8s infinite;
 }
 
-#startBtn:active {
-  transform: translateY(7px);
-  box-shadow: 0 0 0 #1b5e20;
-}
-
-@keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* AVISO DE FASE BONITO */
 #avisoFase {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.88);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.9);
   z-index: 99;
   text-align: center;
-  padding: 20px;
 }
 
 #avisoFase:not(.hidden) {
@@ -195,47 +140,35 @@ body {
 }
 
 .avisoBox {
-  background: linear-gradient(180deg, white, #f1f8e9);
-  padding: 32px 22px;
-  border-radius: 30px;
-  width: 88%;
-  box-shadow: 
-    0 15px 40px rgba(0,0,0,0.4),
-    0 0 0 4px white;
-  border: 3px solid #81c784;
-  animation: popBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: white;
+  padding: 30px 20px;
+  border-radius: 25px;
+  width: 85%;
+  animation: pop 0.4s ease;
 }
 
 .avisoBox span {
-  font-size: 80px;
+  font-size: 70px;
   display: block;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-  animation: float 2s ease-in-out infinite;
 }
 
 .avisoBox h2 {
   color: #1b5e20;
-  font-size: 26px;
-  margin: 12px 0 8px;
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: 24px;
+  margin: 10px 0;
+  font-weight: 900;
 }
 
 .avisoBox p {
-  font-size: 13.5px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #33691e;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: #333;
 }
 
-@keyframes popBounce {
-  from { transform: scale(0) rotate(-10deg); }
-  to { transform: scale(1) rotate(0); }
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
 
 .hidden {
