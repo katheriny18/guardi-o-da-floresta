@@ -11,18 +11,20 @@
   <div id="topo">⭐ <b id="score">0</b> | ❤️ <b id="lives">3</b> | ⏰ <b id="time">90</b> | Fase <b id="level">1</b></div>
   <canvas id="canvas" width="420" height="600"></canvas>
   <div id="controls"><button id="leftBtn">⬅️</button><button id="rightBtn">➡️</button></div>
+
   <div id="capa">
     <h1>🌳 Guardião da<br>Floresta</h1>
-    <p class="sub">Salve os animais em extinção!</p>
-    <div class="regras">
-      FASE 1: 🦜 Arara-azul, 🐒 Mico-leão, 🐢 Tartaruga<br>
-      FASE 2: 🐆 Onça-pintada, 🐺 Lobo-guará, 🦥 Tamanduá<br>
-      FASE 3: 🦦 Ariranha, 🐊 Jacaré-açu, 🦜 Papagaio
-    </div>
+    <p class="sub">Só animais em extinção!</p>
+    <div class="regras">FASE 1: 🦜 Arara, 🐒 Mico, 🐢 Tartaruga<br>200 pontos pra passar!</div>
     <button id="startBtn">🌱 JOGAR</button>
   </div>
+
   <div id="avisoFase" class="hidden">
-    <div class="avisoBox"><span id="avisoEmoji">🎉</span><h2 id="avisoTitulo"></h2><p id="avisoTexto"></p></div>
+    <div class="avisoBox">
+      <span id="avisoEmoji">🎉</span>
+      <h2 id="avisoTitulo">FASE 2</h2>
+      <p id="avisoTexto"></p>
+    </div>
   </div>
 </div>
 <script src="script.js"></script>
