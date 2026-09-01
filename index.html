@@ -1,52 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guardião da Floresta</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guardião da Floresta</title>
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-
 <div id="gameContainer">
   <div id="topo">
-    <div>PONTOS: <b id="score">0</b></div>
-    <div>VIDAS: <b id="lives">3</b></div>
-    <div>TEMPO: <b id="time">120</b></div>
-    <div>FASE: <b id="level">1</b></div>
+    <span>PTS:<b id="score">0</b></span>
+    <span>VIDAS:<b id="lives">3</b></span>
+    <span>TEMPO:<b id="time">120</b></span>
+    <span>FASE:<b id="level">1</b></span>
   </div>
-
   <canvas id="canvas" width="420" height="600"></canvas>
-
   <div id="controls">
     <button id="leftBtn">◀</button>
     <button id="rightBtn">▶</button>
   </div>
 
-  <!-- CAPA CENTRALIZADA - SÓ ESSA, SEM NADA DO LADO -->
   <div id="capa">
     <h1>🌳 Guardião<br>da<br>Floresta</h1>
     <div class="sub">SÓ ANIMAIS EM EXTINÇÃO!</div>
-    
-    <div class="regras">
-      FASE 1: 🦜 Arara (só aqui) + 🐒 Mico<br>
-      200 pontos pra passar!
-    </div>
-    
+    <div class="regras">FASE 1: 🦜 Arara + 🐒 Mico<br>200 pontos pra passar!</div>
     <button id="startBtn">🌱 JOGAR</button>
   </div>
 
-  <!-- AVISO DE FASE -->
   <div id="avisoFase" class="hidden">
     <div class="avisoBox">
-      <span id="avisoEmoji">🐢</span>
-      <h2 id="avisoTitulo">FASE 2</h2>
+      <span id="avisoEmoji"></span>
+      <h2 id="avisoTitulo"></h2>
       <p id="avisoTexto"></p>
     </div>
   </div>
-
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>

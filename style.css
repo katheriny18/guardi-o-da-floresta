@@ -11,14 +11,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.8s;
 }
 
 #gameContainer {
   position: relative;
   width: 420px;
   max-width: 95vw;
-  height: 700px;
   border-radius: 20px;
   overflow: hidden;
   background: white;
@@ -30,11 +28,9 @@ body {
   color: white;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   padding: 12px 5px;
   font-weight: bold;
   font-size: 12px;
-  transition: background 0.8s;
 }
 
 #canvas {
@@ -42,7 +38,6 @@ body {
   width: 100%;
   height: 600px;
   background: #e8f5e9;
-  transition: background 0.8s;
 }
 
 #controls {
@@ -60,10 +55,9 @@ body {
   border-radius: 12px;
   background: #2e7d32;
   color: white;
-  cursor: pointer;
 }
 
-/* CAPA CENTRALIZADA NO MEIO */
+/* CAPA - SÓ O QUE VOCÊ MARCOU */
 #capa {
   position: absolute;
   inset: 0;
@@ -73,43 +67,39 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 30px 20px;
+  padding: 25px;
   z-index: 10;
 }
 
 #capa h1 {
   color: #1e4a28;
-  font-size: 46px;
+  font-size: 42px;
   font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
+  line-height: 0.95;
 }
 
 .sub {
+  margin-top: 12px;
   background: #2e7d32;
   color: white;
-  padding: 8px 22px;
+  padding: 7px 18px;
   border-radius: 20px;
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  font-size: 11px;
   text-transform: uppercase;
-  margin-bottom: 22px;
 }
 
 .regras {
+  margin: 18px 0;
   background: #fffdf5;
   border: 2.5px dashed #81c784;
-  border-radius: 14px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 280px;
-  padding: 14px 12px;
-  font-weight: bold;
+  padding: 12px;
   font-size: 12px;
-  line-height: 1.5;
+  font-weight: bold;
   color: #2e7d32;
-  margin-bottom: 28px;
+  line-height: 1.4;
 }
 
 #startBtn {
@@ -117,32 +107,21 @@ body {
   color: white;
   border: none;
   width: 85%;
-  max-width: 260px;
-  padding: 15px 0;
-  font-size: 20px;
-  border-radius: 30px;
+  padding: 14px 0;
+  font-size: 18px;
+  border-radius: 25px;
   font-weight: 900;
-  box-shadow: 0 5px 0 #1b5e20;
-  cursor: pointer;
+  box-shadow: 0 4px 0 #1b5e20;
 }
 
-#startBtn:active {
-  transform: translateY(5px);
-  box-shadow: none;
-}
-
-/* AVISO DE FASE */
 #avisoFase {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.9);
-  z-index: 99;
-}
-
-#avisoFase:not(.hidden) {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 }
 
 .avisoBox {
@@ -151,16 +130,25 @@ body {
   border-radius: 25px;
   width: 85%;
   text-align: center;
-  animation: pop 0.4s ease;
 }
 
-.avisoBox span { font-size: 70px; display: block; }
-.avisoBox h2 { color: #1b5e20; font-size: 24px; margin: 10px 0; font-weight: 900; }
-.avisoBox p { font-size: 14px; font-weight: bold; line-height: 1.4; color: #333; }
-
-@keyframes pop {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+.avisoBox span {
+  font-size: 70px;
+  display: block;
 }
 
-.hidden { display: none !important; }
+.avisoBox h2 {
+  color: #1b5e20;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.avisoBox p {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.hidden {
+  display: none !important;
+}
